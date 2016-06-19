@@ -6,7 +6,7 @@
     <%= event.name%>
     <%= link_to "show", event_path(event)%>
     <%= link_to "edit", edit_event_path(event)%>
-    <%= link_to "destory", event_path(event), :method => :delete, :data => {:confirm => "Are you sure?"} %>
+    <%= button_to "destory", event_path(event), :method => :delete, :data => {:confirm => "Are you sure?"} %>
     </li>
   <% end %>
 </ul>
