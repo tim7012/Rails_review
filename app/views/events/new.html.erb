@@ -1,0 +1,8 @@
+
+<!-- rails can know the route without the :url in this case according to @event -->
+<%= form_for  @event, :url => events_path do |f| %>
+<%= render :partial => 'form', :locals => {:f =>f} %>
+<%= f.submit "Create" %>
+<% end %>
+
+<%= link_to "Back to index", events_path%>
