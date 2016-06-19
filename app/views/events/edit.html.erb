@@ -1,5 +1,5 @@
 <!-- rails can know the route without the :url and :method in this case according to @event, to see if it is new or edit and decides to use patch or not -->
-<%= form_for @event, :url => event_path(@event), :method => :patch do |f| %>
+<%= form_for @event, :url => event_path(@event), :method => :patch, :class => "form" do |f| %>
 <%= render :partial => 'form', :locals => {:f=>f} %>
-<%= f.submit "Update" %>
+<%= f.submit "Update", :class => "btn btn-primary" %>
 <% end %>
