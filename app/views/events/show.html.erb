@@ -1,5 +1,11 @@
 <h2><%= @event.name %></h2>
 
+<ul>
+  <% @event.groups.each do |g| %>
+    <li><%= g.name %></li>
+  <% end %>
+</ul>
+
 <p><%= @event.category.try(:name)%></p>
 
 <%= simple_format(@event.description) %>
@@ -7,10 +13,22 @@
 <p><%= link_to 'Back to index', events_path %></p>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- cp ~/pictures/ruby.png app/assets/images/-->
 <%= image_tag("ruby.png") %>
 
 <div id="demo">
-test
+background test
 
 </div>
