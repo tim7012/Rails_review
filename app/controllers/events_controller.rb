@@ -9,7 +9,12 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
-    @events = @events.order("id DESC").page(params[:page]).per(5)
+
+    if params[:order]
+      sort_by = (params[:order] == 'name') ? 'name' : 'id'
+      @events = @events.order(sort_by)
+    end
+    @events = @events.page(params[:page]).per(5)
   end
 
   def new
