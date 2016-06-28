@@ -50,6 +50,12 @@ class EventsController < ApplicationController
     flash[:alert] = "event was successfully deleted"
   end
 
+  def bulk_delete
+    Event.destroy_all
+
+    redirect_to :back
+  end
+
   private
 
   def set_event
