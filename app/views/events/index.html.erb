@@ -4,13 +4,14 @@
   <%= link_to "Latest events",latest_events_path %>
 </p>
 
-
+<%= form_tag bulk_update_events_path do %>
 
 
 <table class="table">
   <% @events.each do |event| %>
     <tr>
       <td>
+      <%= check_box_tag "ids[]", event.id, false %>
       <%= event.name%>
       </td>
 
@@ -26,6 +27,10 @@
   <% end %>
 </table>
 
+<%= submit_tag "Delete" %>
+<%= submit_tag "Publish" %>
+
+<% end %>
 <%= paginate @events %>
 
-<%= button_to "delete all", bulk_delete_events_path %>
+

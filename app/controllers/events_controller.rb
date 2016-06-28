@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   def index
     #@events = Event.all
-    @events = Event.page(params[:page]).per(5)
+    @events = Event.order("id DESC").page(params[:page]).per(5)
   end
 
   def new
@@ -50,9 +50,15 @@ class EventsController < ApplicationController
     flash[:alert] = "event was successfully deleted"
   end
 
-  def bulk_delete
-    Event.destroy_all
+  def bulk_update
+    ids = Array(params[:ids])
+    events = ids.map{|i| Event.find_by_id(i)}.compact
 
+    if params[:commit] == "Delete"
+      events.each {|e| e.destroy}
+    elsif params[:commit] =="Publish"
+      events.each {|e| e.update(:status => "published")}
+    end
     redirect_to :back
   end
 
@@ -63,7 +69,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :category_id, :group_ids => [])
+    params.require(:event).permit(:name, :description, :status, :category_id, :group_ids => [])
   end
 
 
