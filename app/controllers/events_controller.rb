@@ -21,6 +21,10 @@ class EventsController < ApplicationController
     end
   end
 
+  def latest
+    @events = Event.order("id DESC").limit(3)
+  end
+
   def show
     @page_title = @event.name
   end

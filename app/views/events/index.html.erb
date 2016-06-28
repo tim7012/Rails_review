@@ -1,5 +1,12 @@
 <%= link_to "New Event", new_event_path %>
 
+<p>
+  <%= link_to "Latest events", latest_events_path %>
+</p>
+
+
+
+
 <table class="table">
   <% @events.each do |event| %>
     <tr>
