@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_action :set_event, :only => [:show, :edit, :update, :destroy]
+  before_action :set_event, :only => [:show, :edit, :update, :destroy, :dashboard]
 
   def index
     #@events = Event.all
@@ -27,6 +27,10 @@ class EventsController < ApplicationController
 
   def show
     @page_title = @event.name
+  end
+
+  def dashboard
+
   end
 
   def edit
