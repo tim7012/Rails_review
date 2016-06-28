@@ -4,7 +4,12 @@ class EventsController < ApplicationController
 
   def index
     #@events = Event.all
-    @events = Event.order("id DESC").page(params[:page]).per(5)
+    if params[:keyword]
+      @events = Event.where( [ "name like ?", "%#{params[:keyword]}%" ] )
+    else
+      @events = Event.all
+    end
+    @events = @events.order("id DESC").page(params[:page]).per(5)
   end
 
   def new
