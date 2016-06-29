@@ -1,13 +1,10 @@
-#rake dev:demo
-
+#rake dev:rebuild -> restart server
 namespace :dev do
 
-  task :demo => :environment do
-    puts "demo!!"
+  task :rebuild =>["db:drop", "db:setup", :fake]
 
-    puts Event.count
-end
-#rake dev:fake
+
+  #rake dev:fake
   task :fake => :environment do
     User.delete_all
     Event.delete_all
